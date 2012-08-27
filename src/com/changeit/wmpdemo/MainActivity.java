@@ -8,6 +8,7 @@ import android.view.KeyEvent;
 import android.view.Window;
 import android.view.WindowManager;
 import android.webkit.ConsoleMessage;
+import android.webkit.GeolocationPermissions;
 import android.webkit.WebChromeClient;
 import android.webkit.WebView;
 import com.changeit.wmpolyfill.WebClient;
@@ -69,6 +70,12 @@ public class MainActivity extends Activity
         	                         + lineNumber + "], Source: "
         	                         + sourceID );
 			}
+
+			@Override
+			public void onGeolocationPermissionsShowPrompt(String origin, GeolocationPermissions.Callback callback) {
+				callback.invoke(origin, true, false);
+			 }
+
 
 //			@Override	// enable alert javascript, will generate native Android alert
 //			public boolean onJsAlert(WebView view, String url, String message, JsResult result) {
